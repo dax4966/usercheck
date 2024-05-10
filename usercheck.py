@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    # print('test run for load')
+    #print('test run for load')
     return render_template('upload.html')
 
 @app.route('/upload', methods = ['POST','GET'])
@@ -22,7 +22,7 @@ def upload():
         
         print('---------------- New calculation ------------------')
 
-        debit_sum = df.loc[df['transanctionRelatedType'].isin(['EntryFee', 'Withdrawal']) & (df['transactionStatus'] == 'Success'), 'amount'].sum()
+        debit_sum = df.loc[df['transanctionRelatedType'].isin(['EntryFee', 'Withdrawal']) & (df['transactionStatus'].isin(['Success','Pending'])), 'amount'].sum()
         credit_sum = df.loc[df['transanctionRelatedType'].isin(['Signup Bonus', 'Credit', 'Winnings', 'Refund']) & (df['transactionStatus'] == 'Success'), 'amount'].sum()
         print('Debit Sum - :',debit_sum)
         print('Credit Sum - :',credit_sum)
