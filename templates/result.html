@@ -84,7 +84,9 @@
                     {% for win in winnings_info %}
                     <tr>
                         <td>{{ loop.index }}</td>
-                        <td><a href="{{ win.link }}" target="_blank">{{ win.contest_id }}</a></td>
+                        <!-- <td><a href="{{ win.link }}" target="_blank">{{ win.contest_id }}</a></td> -->
+                        <td ><a href="#" data-url="{{ win.link }}" class="dynamic-link">{{ win.contest_id }}</a></td> 
+                        
                         <td>{{ win.amount }}</td>
                         <td>{{ win.transaction_type }}</td>
                         <td>{{ win.transaction_time }}</td>
